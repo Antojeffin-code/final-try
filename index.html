@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#0b1221" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="VisionLux" />
+  <meta name="application-name" content="VisionLux" />
+
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/icon-512.png" />
+  <title>VisionLux Opticians – Premium Eyewear & Eye Care</title>
+  <meta name="description"
+    content="VisionLux Opticians – Browse premium eyewear, book eye exams, get prescription lenses fitted. Visit our store for the finest frames and professional eye care services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ========== PWA INSTALL BANNER ========== -->
+  <div class="pwa-install-banner" id="pwa-install-banner" hidden>
+    <div class="pwa-install-banner__content">
+      <img src="assets/icons/icon-192.png" alt="VisionLux" class="pwa-install-banner__icon" />
+      <div>
+        <strong>Install VisionLux App</strong>
+        <p>Add to home screen for the best experience</p>
+      </div>
+    </div>
+    <div class="pwa-install-banner__actions">
+      <button class="btn btn--primary btn--sm" id="pwa-install-btn">Install</button>
+      <button class="pwa-install-banner__dismiss" id="pwa-install-dismiss" aria-label="Dismiss"><i
+          class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+
+  <!-- ========== TOAST CONTAINER ========== -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- ========== OVERLAY ========== -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ========================================================
+     HEADER
+     ======================================================== -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo" id="logo-link">
+        <i class="fa-solid fa-eye"></i>
+        <span>Vision<strong>Lux</strong></span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#hero" class="nav__link">Home</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li class="dropdown">
+          <a href="#products" class="nav__link dropdown__toggle">Products <i
+              class="fa-solid fa-chevron-down fa-xs"></i></a>
+          <ul class="dropdown__menu">
+            <li><a href="#products" data-category="mens" class="dropdown__link"><i class="fa-solid fa-glasses"></i>
+                Men's Glasses</a></li>
+            <li><a href="#products" data-category="womens" class="dropdown__link"><i class="fa-solid fa-glasses"></i>
+                Women's Glasses</a></li>
+            <li><a href="#products" data-category="sunglasses" class="dropdown__link"><i class="fa-solid fa-sun"></i>
+                Sunglasses</a></li>
+            <li><a href="#products" data-category="lenses" class="dropdown__link"><i class="fa-solid fa-circle"></i>
+                Contact Lenses</a></li>
+            <li><a href="#products" data-category="accessories" class="dropdown__link"><i
+                  class="fa-solid fa-bag-shopping"></i> Accessories</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#services" class="nav__link dropdown__toggle">Services <i
+              class="fa-solid fa-chevron-down fa-xs"></i></a>
+          <ul class="dropdown__menu">
+            <li><a href="#services" class="dropdown__link"><i class="fa-solid fa-stethoscope"></i> Eye Exam</a></li>
+            <li><a href="#services" class="dropdown__link"><i class="fa-solid fa-prescription"></i> Lens Fitting</a>
+            </li>
+            <li><a href="#services" class="dropdown__link"><i class="fa-solid fa-screwdriver-wrench"></i> Lens
+                Repair</a></li>
+          </ul>
+        </li>
+        <li><a href="#promotions" class="nav__link">Offers</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+
+      <!-- Nav Actions -->
+      <div class="nav__actions">
+        <button class="nav__icon-btn" id="search-btn" title="Search" aria-label="Search"><i
+            class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="nav__icon-btn" id="wishlist-btn" title="Wishlist" aria-label="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlist-count">0</span>
+        </button>
+        <button class="nav__icon-btn" id="cart-btn" title="Cart" aria-label="Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="badge" id="cart-count">0</span>
+        </button>
+        <button class="nav__icon-btn login-btn" id="login-btn" title="Login / Account" aria-label="Login">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu__close" id="mobile-close" aria-label="Close menu"><i
+        class="fa-solid fa-xmark"></i></button>
+    <ul class="mobile-menu__list">
+      <li><a href="#hero" class="mobile-menu__link" data-close-mobile>Home</a></li>
+      <li><a href="#about" class="mobile-menu__link" data-close-mobile>About Us</a></li>
+      <li>
+        <button class="mobile-menu__link mobile-accordion">Products <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="mobile-sub">
+          <li><a href="#products" class="mobile-sub__link" data-category="mens" data-close-mobile>Men's Glasses</a></li>
+          <li><a href="#products" class="mobile-sub__link" data-category="womens" data-close-mobile>Women's Glasses</a>
+          </li>
+          <li><a href="#products" class="mobile-sub__link" data-category="sunglasses" data-close-mobile>Sunglasses</a>
+          </li>
+          <li><a href="#products" class="mobile-sub__link" data-category="lenses" data-close-mobile>Contact Lenses</a>
+          </li>
+          <li><a href="#products" class="mobile-sub__link" data-category="accessories" data-close-mobile>Accessories</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <button class="mobile-menu__link mobile-accordion">Services <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="mobile-sub">
+          <li><a href="#services" class="mobile-sub__link" data-close-mobile>Eye Exam</a></li>
+          <li><a href="#services" class="mobile-sub__link" data-close-mobile>Lens Fitting</a></li>
+          <li><a href="#services" class="mobile-sub__link" data-close-mobile>Lens Repair</a></li>
+        </ul>
+      </li>
+      <li><a href="#promotions" class="mobile-menu__link" data-close-mobile>Offers</a></li>
+      <li><a href="#contact" class="mobile-menu__link" data-close-mobile>Contact</a></li>
+      <li><a href="#" class="mobile-menu__link" id="mobile-login-btn">Login / Account</a></li>
+    </ul>
+    <div class="mobile-menu__footer">
+      <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+  </div>
+
+  <!-- ========================================================
+     HERO SECTION
+     ======================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img src="assets/hero_banner.png" alt="Premium Eyewear Collection" class="hero__img" />
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="container hero__content">
+      <span class="hero__tag reveal-up">New Collection 2026</span>
+      <h1 class="hero__title reveal-up">See the World in <br /><em>Perfect Clarity</em></h1>
+      <p class="hero__subtitle reveal-up">Premium frames, expert eye care & prescription lenses — all under one roof.
+        Style meets vision.</p>
+      <div class="hero__ctas reveal-up">
+        <a href="#products" class="btn btn--primary">Shop Eyewear</a>
+        <a href="#booking" class="btn btn--outline">Book Eye Exam</a>
+      </div>
+      <div class="hero__stats reveal-up">
+        <div class="stat"><span class="stat__num">5000+</span><span class="stat__label">Happy Clients</span></div>
+        <div class="stat__divider"></div>
+        <div class="stat"><span class="stat__num">200+</span><span class="stat__label">Frame Styles</span></div>
+        <div class="stat__divider"></div>
+        <div class="stat"><span class="stat__num">15 Yrs</span><span class="stat__label">Experience</span></div>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <a href="#about" aria-label="Scroll down"><i class="fa-solid fa-chevron-down"></i></a>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     ABOUT SECTION
+     ======================================================== -->
+  <section class="about section" id="about">
+    <div class="container about__grid">
+      <div class="about__image reveal-left">
+        <img src="assets/about_store.png" alt="VisionLux store interior" />
+        <div class="about__badge"><span>15+</span> Years of Excellence</div>
+      </div>
+      <div class="about__content reveal-right">
+        <span class="section__tag">About VisionLux</span>
+        <h2 class="section__title">Crafted for Your Vision, <em>Designed for Your Style</em></h2>
+        <p class="about__text">At VisionLux, we believe that eyewear isn't just a medical necessity — it's a form of
+          self-expression. Since 2009, we've been helping people see clearly and look their absolute best with
+          hand-picked frames and cutting-edge lens technology.</p>
+        <div class="about__features">
+          <div class="about__feature">
+            <span class="feature-icon"><i class="fa-solid fa-shield-halved"></i></span>
+            <div>
+              <h4>UV Protection</h4>
+              <p>100% UV-A & UV-B blocking lenses</p>
+            </div>
+          </div>
+          <div class="about__feature">
+            <span class="feature-icon"><i class="fa-solid fa-layer-group"></i></span>
+            <div>
+              <h4>Anti-Glare Coating</h4>
+              <p>Reduce eye strain with premium AR coatings</p>
+            </div>
+          </div>
+          <div class="about__feature">
+            <span class="feature-icon"><i class="fa-solid fa-display"></i></span>
+            <div>
+              <h4>Blue Light Filter</h4>
+              <p>Protect your eyes from digital screens</p>
+            </div>
+          </div>
+          <div class="about__feature">
+            <span class="feature-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <div>
+              <h4>Bifocal & Progressive</h4>
+              <p>Advanced multifocal lens solutions</p>
+            </div>
+          </div>
+        </div>
+        <a href="#services" class="btn btn--primary">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     PRODUCTS SECTION
+     ======================================================== -->
+  <section class="products section" id="products">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <span class="section__tag">Our Collection</span>
+        <h2 class="section__title">Find Your Perfect <em>Frame</em></h2>
+        <p class="section__subtitle">From everyday classics to fashion-forward styles, discover frames that fit your
+          face and your life.</p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="product-tabs reveal-up" role="tablist">
+        <button class="tab active" data-tab="all" role="tab" aria-selected="true">All</button>
+        <button class="tab" data-tab="mens" role="tab">Men's</button>
+        <button class="tab" data-tab="womens" role="tab">Women's</button>
+        <button class="tab" data-tab="sunglasses" role="tab">Sunglasses</button>
+        <button class="tab" data-tab="lenses" role="tab">Contact Lenses</button>
+        <button class="tab" data-tab="accessories" role="tab">Accessories</button>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="product-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     SERVICES SECTION
+     ======================================================== -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <span class="section__tag">What We Offer</span>
+        <h2 class="section__title">Professional Eye Care <em>Services</em></h2>
+        <p class="section__subtitle">From comprehensive eye exams to precision lens fitting, our certified optometrists
+          have you covered.</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card reveal-up">
+          <div class="service-card__icon"><i class="fa-solid fa-eye"></i></div>
+          <h3>Eye Examination</h3>
+          <p>Comprehensive eye health check including vision acuity, pressure testing, and retinal examination.</p>
+          <ul class="service-card__details">
+            <li><i class="fa-solid fa-clock"></i> 30–45 minutes</li>
+            <li><i class="fa-solid fa-calendar-check"></i> Appointment required</li>
+            <li><i class="fa-solid fa-indian-rupee-sign"></i> Starting from ₹500</li>
+          </ul>
+          <a href="#booking" class="btn btn--sm btn--primary">Book Now</a>
+        </div>
+        <div class="service-card reveal-up">
+          <div class="service-card__icon"><i class="fa-solid fa-prescription"></i></div>
+          <h3>Prescription Lens Fitting</h3>
+          <p>Expert fitting of single vision, bifocal, and progressive lenses to your exact prescription.</p>
+          <ul class="service-card__details">
+            <li><i class="fa-solid fa-clock"></i> 20–30 minutes</li>
+            <li><i class="fa-solid fa-certificate"></i> Certified opticians</li>
+            <li><i class="fa-solid fa-indian-rupee-sign"></i> Starting from ₹800</li>
+          </ul>
+          <a href="#booking" class="btn btn--sm btn--primary">Book Now</a>
+        </div>
+        <div class="service-card reveal-up">
+          <div class="service-card__icon"><i class="fa-solid fa-eye-dropper"></i></div>
+          <h3>Vision Testing</h3>
+          <p>Advanced computerized refraction and visual field testing for a complete picture of your vision health.</p>
+          <ul class="service-card__details">
+            <li><i class="fa-solid fa-clock"></i> 15–20 minutes</li>
+            <li><i class="fa-solid fa-microchip"></i> Digital equipment</li>
+            <li><i class="fa-solid fa-indian-rupee-sign"></i> Starting from ₹300</li>
+          </ul>
+          <a href="#booking" class="btn btn--sm btn--primary">Book Now</a>
+        </div>
+        <div class="service-card reveal-up">
+          <div class="service-card__icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <h3>Lens Replacement & Repairs</h3>
+          <p>Frame adjustments, nose pad replacement, hinge tightening, and lens replacements for any brand.</p>
+          <ul class="service-card__details">
+            <li><i class="fa-solid fa-clock"></i> Same day service</li>
+            <li><i class="fa-solid fa-circle-check"></i> All brands accepted</li>
+            <li><i class="fa-solid fa-indian-rupee-sign"></i> Starting from ₹200</li>
+          </ul>
+          <a href="#booking" class="btn btn--sm btn--primary">Book Now</a>
+        </div>
+        <div class="service-card reveal-up">
+          <div class="service-card__icon"><i class="fa-solid fa-circle"></i></div>
+          <h3>Contact Lens Consultation</h3>
+          <p>Fitting evaluation and trial of daily, monthly, toric, and multifocal contact lenses.</p>
+          <ul class="service-card__details">
+            <li><i class="fa-solid fa-clock"></i> 30 minutes</li>
+            <li><i class="fa-solid fa-vial"></i> Trial lenses provided</li>
+            <li><i class="fa-solid fa-indian-rupee-sign"></i> Starting from ₹400</li>
+          </ul>
+          <a href="#booking" class="btn btn--sm btn--primary">Book Now</a>
+        </div>
+        <div class="service-card reveal-up">
+          <div class="service-card__icon"><i class="fa-solid fa-file-medical"></i></div>
+          <h3>Insurance & Reports</h3>
+          <p>We accept major health insurance plans and provide detailed prescription reports for insurance claims.</p>
+          <ul class="service-card__details">
+            <li><i class="fa-solid fa-building-columns"></i> Multiple insurers</li>
+            <li><i class="fa-solid fa-file-pdf"></i> Digital reports</li>
+            <li><i class="fa-solid fa-indian-rupee-sign"></i> As per plan</li>
+          </ul>
+          <a href="#contact" class="btn btn--sm btn--outline">Enquire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     PROMOTIONS SECTION
+     ======================================================== -->
+  <section class="promotions section" id="promotions">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <span class="section__tag">Special Deals</span>
+        <h2 class="section__title">Exclusive Offers & <em>Promotions</em></h2>
+      </div>
+      <div class="promo__grid">
+        <div class="promo-card promo-card--gold reveal-up">
+          <div class="promo-card__badge">Limited</div>
+          <i class="fa-solid fa-glasses promo-card__icon"></i>
+          <h3>Buy 1 Get 1 Free</h3>
+          <p>On all prescription frames this month. Valid on frames priced ₹2000 and above.</p>
+          <span class="promo-card__code">Code: BOGO26</span>
+          <a href="#products" class="btn btn--sm btn--white">Shop Now</a>
+        </div>
+        <div class="promo-card promo-card--navy reveal-up">
+          <div class="promo-card__badge">Hot</div>
+          <i class="fa-solid fa-sun promo-card__icon"></i>
+          <h3>30% Off Sunglasses</h3>
+          <p>Beat the summer heat in style. All premium sunglass frames at 30% discount.</p>
+          <span class="promo-card__code">Code: SUN30</span>
+          <a href="#products" class="btn btn--sm btn--white">Shop Now</a>
+        </div>
+        <div class="promo-card promo-card--teal reveal-up">
+          <div class="promo-card__badge">New</div>
+          <i class="fa-solid fa-stethoscope promo-card__icon"></i>
+          <h3>Free Eye Exam</h3>
+          <p>Get a free comprehensive eye examination with any frame purchase above ₹3000.</p>
+          <span class="promo-card__code">Auto-applied</span>
+          <a href="#booking" class="btn btn--sm btn--white">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     TESTIMONIALS SECTION
+     ======================================================== -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <span class="section__tag">Client Stories</span>
+        <h2 class="section__title">What Our Customers <em>Say</em></h2>
+      </div>
+      <div class="testimonials__carousel" id="testimonials-carousel">
+        <div class="testimonials__track" id="testimonials-track">
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p>"Absolutely love my new glasses! The staff was incredibly helpful, and the quality of the frames is
+              exceptional. VisionLux is now my go-to optician."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-avatar" style="background:var(--accent-gold)">A</div>
+              <div>
+                <strong>Aanya Sharma</strong>
+                <span>Mumbai, Maharashtra</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p>"Booked an eye exam online and it was seamless. The optometrist was very thorough. My prescription was
+              ready in 2 days. Highly recommend!"</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-avatar" style="background:var(--accent-teal)">R</div>
+              <div>
+                <strong>Rohan Mehta</strong>
+                <span>Pune, Maharashtra</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p>"Best sunglasses I've ever owned. The blue-light blocking lenses have made a massive difference for my
+              screen time. The staff really knows their stuff."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-avatar" style="background:#e84393">P</div>
+              <div>
+                <strong>Priya Nair</strong>
+                <span>Bengaluru, Karnataka</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★☆</div>
+            <p>"Excellent range of women's frames, the cat-eye frames I found here are stunning. Quick repairs service
+              too – fixed my old frame in 30 mins while I waited."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-avatar" style="background:#7c3aed">S</div>
+              <div>
+                <strong>Sneha Kulkarni</strong>
+                <span>Nashik, Maharashtra</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p>"The contact lens consultation was incredibly informative. The optician fitted me with toric lenses that
+              actually work well for my astigmatism. 10/10 experience."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-avatar" style="background:#059669">V</div>
+              <div>
+                <strong>Vikram Iyer</strong>
+                <span>Chennai, Tamil Nadu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonials__controls">
+        <button class="carousel-btn" id="prev-btn" aria-label="Previous review"><i
+            class="fa-solid fa-arrow-left"></i></button>
+        <div class="carousel-dots" id="carousel-dots"></div>
+        <button class="carousel-btn" id="next-btn" aria-label="Next review"><i
+            class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     APPOINTMENT BOOKING SECTION
+     ======================================================== -->
+  <section class="booking section" id="booking">
+    <div class="container booking__grid">
+      <div class="booking__info reveal-left">
+        <span class="section__tag">Schedule a Visit</span>
+        <h2 class="section__title">Book Your <em>Eye Exam</em></h2>
+        <p>Take the first step toward better vision. Our certified optometrists are ready to help you see the world more
+          clearly.</p>
+        <ul class="booking__perks">
+          <li><i class="fa-solid fa-circle-check"></i> Comprehensive eye health check</li>
+          <li><i class="fa-solid fa-circle-check"></i> Digital prescription report</li>
+          <li><i class="fa-solid fa-circle-check"></i> Friendly, professional staff</li>
+          <li><i class="fa-solid fa-circle-check"></i> Same-week appointments available</li>
+          <li><i class="fa-solid fa-circle-check"></i> Insurance claim assistance</li>
+        </ul>
+        <div class="booking__hours">
+          <h4><i class="fa-regular fa-clock"></i> Clinic Hours</h4>
+          <table class="hours-table">
+            <tr>
+              <td>Mon – Fri</td>
+              <td>9:00 AM – 7:00 PM</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>10:00 AM – 6:00 PM</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>11:00 AM – 4:00 PM</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="booking__form-wrap reveal-right">
+        <form class="booking__form" id="booking-form" novalidate>
+          <h3>Request an Appointment</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-name">Full Name *</label>
+              <input type="text" id="b-name" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="b-phone">Phone Number *</label>
+              <input type="tel" id="b-phone" placeholder="+91 XXXXX XXXXX" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-email">Email Address</label>
+              <input type="email" id="b-email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="b-service">Service Required *</label>
+              <select id="b-service" required>
+                <option value="">Select a service</option>
+                <option value="eye-exam">Eye Examination</option>
+                <option value="lens-fitting">Prescription Lens Fitting</option>
+                <option value="vision-test">Vision Testing</option>
+                <option value="contact-lens">Contact Lens Consultation</option>
+                <option value="repair">Frame/Lens Repair</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-date">Preferred Date *</label>
+              <input type="date" id="b-date" required />
+            </div>
+            <div class="form-group">
+              <label for="b-time">Preferred Time *</label>
+              <select id="b-time" required>
+                <option value="">Select time slot</option>
+                <option value="09:00">9:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="13:00">1:00 PM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+                <option value="16:00">4:00 PM</option>
+                <option value="17:00">5:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="b-notes">Additional Notes</label>
+            <textarea id="b-notes" rows="3"
+              placeholder="Any specific concerns or existing prescription details..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Confirm Appointment <i
+              class="fa-solid fa-calendar-check"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     STORE DETAILS SECTION
+     ======================================================== -->
+  <section class="store section" id="store">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <span class="section__tag">Find Us</span>
+        <h2 class="section__title">Visit Our <em>Store</em></h2>
+      </div>
+      <div class="store__grid">
+        <div class="store__info reveal-left">
+          <div class="store-branch">
+            <h3><i class="fa-solid fa-location-dot"></i> Main Branch – Andheri West</h3>
+            <p>Shop No. 12, Crystal Plaza, New Link Road, Andheri West, Mumbai – 400053</p>
+            <ul class="store-contact-list">
+              <li><i class="fa-solid fa-phone"></i> <a href="tel:+917339153605">+91 73391 53605</a></li>
+              <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/917339153605" target="_blank">+91 73391
+                  53605</a></li>
+              <li><i class="fa-solid fa-envelope"></i> <a
+                  href="mailto:antojeffin2005@gmail.com">antojeffin2005@gmail.com</a></li>
+            </ul>
+            <div class="store-hours">
+              <h4>Opening Hours</h4>
+              <table class="hours-table">
+                <tr>
+                  <td>Mon – Fri</td>
+                  <td>9:00 AM – 8:00 PM</td>
+                </tr>
+                <tr>
+                  <td>Saturday</td>
+                  <td>10:00 AM – 7:00 PM</td>
+                </tr>
+                <tr>
+                  <td>Sunday</td>
+                  <td>11:00 AM – 5:00 PM</td>
+                </tr>
+              </table>
+            </div>
+            <p class="store-parking"><i class="fa-solid fa-circle-parking"></i> Free parking available in the mall
+              basement</p>
+          </div>
+          <div class="store-branch">
+            <h3><i class="fa-solid fa-location-dot"></i> Branch 2 – Bandra</h3>
+            <p>204, Linking Road, Bandra West, Mumbai – 400050</p>
+            <ul class="store-contact-list">
+              <li><i class="fa-solid fa-phone"></i> <a href="tel:+916382442388">+91 63824 42388</a></li>
+              <li><i class="fa-solid fa-envelope"></i> <a
+                  href="mailto:25pba137akilansebastian@jim.ac.in">25pba137akilansebastian@jim.ac.in</a></li>
+            </ul>
+          </div>
+          <div class="store-ctas">
+            <a href="https://wa.me/917339153605" target="_blank" class="btn btn--whatsapp"><i
+                class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="tel:+917339153605" class="btn btn--outline"><i class="fa-solid fa-phone"></i> Call Now</a>
+          </div>
+        </div>
+        <div class="store__map reveal-right">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.2658!2d72.8347!3d19.1136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9b888ae67fd%3A0x64bef3c4ef640c21!2sAndheri%20West%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            width="100%" height="420" style="border:0;border-radius:1rem;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="VisionLux Store Location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     CONTACT SECTION
+     ======================================================== -->
+  <section class="contact section" id="contact">
+    <div class="container contact__grid">
+      <div class="contact__form-wrap reveal-left">
+        <span class="section__tag">Get in Touch</span>
+        <h2 class="section__title">Send Us a <em>Message</em></h2>
+        <form class="contact__form" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Your Name *</label>
+              <input type="text" id="c-name" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email Address *</label>
+              <input type="email" id="c-email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-subject">Subject</label>
+            <input type="text" id="c-subject" placeholder="What is this regarding?" />
+          </div>
+          <div class="form-group">
+            <label for="c-message">Message *</label>
+            <textarea id="c-message" rows="5" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+      <div class="contact__info reveal-right">
+        <div class="contact-info-card">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <h4>Store Address</h4>
+            <p>Crystal Plaza, New Link Road,<br />Andheri West, Mumbai – 400053</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:+917339153605">+91 73391 53605</a></p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div>
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/917339153605" target="_blank">+91 73391 53605</a></p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:antojeffin2005@gmail.com">antojeffin2005@gmail.com</a></p>
+          </div>
+        </div>
+        <!-- Newsletter -->
+        <div class="newsletter-box">
+          <h4><i class="fa-solid fa-envelope-open-text"></i> Newsletter</h4>
+          <p>Subscribe for exclusive offers and eye care tips.</p>
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <input type="email" id="nl-email" placeholder="Enter your email" required />
+            <button type="submit" class="btn btn--primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+     FOOTER
+     ======================================================== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#" class="nav__logo">
+          <i class="fa-solid fa-eye"></i>
+          <span>Vision<strong>Lux</strong></span>
+        </a>
+        <p>Premium eyewear and professional eye care since 2009. Helping India see better, one frame at a time.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/__an_to__j" target="_blank" class="social-icon" aria-label="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#products">Shop</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#promotions">Offers</a></li>
+          <li><a href="#booking">Book Exam</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__links">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#products">Men's Glasses</a></li>
+          <li><a href="#products">Women's Glasses</a></li>
+          <li><a href="#products">Sunglasses</a></li>
+          <li><a href="#products">Contact Lenses</a></li>
+          <li><a href="#products">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="footer__links">
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Return & Refund Policy</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 VisionLux Opticians. All rights reserved. | Designed with <i class="fa-solid fa-heart"></i> in Mumbai
+      </p>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+     CART SIDEBAR
+     ======================================================== -->
+  <aside class="cart-sidebar" id="cart-sidebar" aria-label="Shopping Cart">
+    <div class="cart-sidebar__header">
+      <h3><i class="fa-solid fa-bag-shopping"></i> Your Cart</h3>
+      <button class="cart-sidebar__close" id="cart-close" aria-label="Close cart"><i
+          class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-sidebar__items" id="cart-items">
+      <div class="cart-empty" id="cart-empty">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <p>Your cart is empty</p>
+        <a href="#products" class="btn btn--outline btn--sm" id="cart-shop-link">Start Shopping</a>
+      </div>
+    </div>
+    <div class="cart-sidebar__footer" id="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cart-total">₹0</span>
+      </div>
+      <button class="btn btn--primary btn--full" id="checkout-btn">
+        Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <p class="cart-note">Free shipping on orders above ₹2000</p>
+    </div>
+  </aside>
+
+  <!-- ========================================================
+     LOGIN / REGISTER MODAL
+     ======================================================== -->
+  <div class="modal" id="auth-modal" role="dialog" aria-modal="true" aria-label="Login / Register">
+    <div class="modal__content modal__content--auth">
+      <button class="modal__close" id="auth-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal__logo">
+        <i class="fa-solid fa-eye"></i>
+        <span>Vision<strong>Lux</strong></span>
+      </div>
+
+      <!-- Auth Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="login-tab-btn" data-auth-tab="login">Login</button>
+        <button class="auth-tab" id="register-tab-btn" data-auth-tab="register">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <div class="auth-pane active" id="login-pane">
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="l-email">Email / Phone</label>
+            <input type="text" id="l-email" placeholder="Email or phone number" required />
+          </div>
+          <div class="form-group form-group--password">
+            <label for="l-password">Password</label>
+            <input type="password" id="l-password" placeholder="Your password" required />
+            <button type="button" class="toggle-password" data-target="l-password" aria-label="Show/Hide password"><i
+                class="fa-regular fa-eye"></i></button>
+          </div>
+          <div class="form-row form-row--space">
+            <label class="checkbox-label"><input type="checkbox" id="remember-me" /> Remember me</label>
+            <button type="button" class="link-btn" id="forgot-btn">Forgot password?</button>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Login <i
+              class="fa-solid fa-arrow-right"></i></button>
+          <p class="auth-switch">Don't have an account? <button type="button" class="link-btn"
+              data-auth-tab="register">Sign up free</button></p>
+        </form>
+      </div>
+
+      <!-- Forgot Password Pane -->
+      <div class="auth-pane" id="forgot-pane">
+        <form id="forgot-form" novalidate>
+          <p class="forgot-intro">Enter your email address and we'll send you a link to reset your password.</p>
+          <div class="form-group">
+            <label for="f-email">Email Address</label>
+            <input type="email" id="f-email" placeholder="your@email.com" required />
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Send Reset Link <i
+              class="fa-solid fa-paper-plane"></i></button>
+          <p class="auth-switch"><button type="button" class="link-btn" id="back-to-login">← Back to Login</button></p>
+        </form>
+      </div>
+
+      <!-- Register Form -->
+      <div class="auth-pane" id="register-pane">
+        <form id="register-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="r-fname">First Name</label>
+              <input type="text" id="r-fname" placeholder="First name" required />
+            </div>
+            <div class="form-group">
+              <label for="r-lname">Last Name</label>
+              <input type="text" id="r-lname" placeholder="Last name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="r-email">Email Address</label>
+            <input type="email" id="r-email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="r-phone">Phone Number</label>
+            <input type="tel" id="r-phone" placeholder="+91 XXXXX XXXXX" required />
+          </div>
+          <div class="form-group form-group--password">
+            <label for="r-password">Create Password</label>
+            <input type="password" id="r-password" placeholder="Min. 8 characters" required />
+            <button type="button" class="toggle-password" data-target="r-password" aria-label="Show/Hide password"><i
+                class="fa-regular fa-eye"></i></button>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label"><input type="checkbox" id="r-terms" required /> I agree to the <a
+                href="#">Terms & Privacy Policy</a></label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Create Account <i
+              class="fa-solid fa-user-plus"></i></button>
+          <p class="auth-switch">Already have an account? <button type="button" class="link-btn"
+              data-auth-tab="login">Login</button></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+     USER DASHBOARD MODAL
+     ======================================================== -->
+  <div class="modal" id="dashboard-modal" role="dialog" aria-modal="true" aria-label="User Dashboard">
+    <div class="modal__content modal__content--dashboard">
+      <button class="modal__close" id="dashboard-close" aria-label="Close Dashboard"><i
+          class="fa-solid fa-xmark"></i></button>
+      <div class="dashboard__sidebar">
+        <div class="dashboard__avatar">
+          <span id="dash-initials">?</span>
+        </div>
+        <p id="dash-name" class="dashboard__name">User</p>
+        <p id="dash-email" class="dashboard__email">—</p>
+        <nav class="dashboard__nav">
+          <button class="dash-nav__btn active" data-dash-tab="profile"><i class="fa-regular fa-user"></i>
+            Profile</button>
+          <button class="dash-nav__btn" data-dash-tab="orders"><i class="fa-solid fa-box"></i> Orders</button>
+          <button class="dash-nav__btn" data-dash-tab="wishlist"><i class="fa-regular fa-heart"></i> Wishlist</button>
+          <button class="dash-nav__btn" data-dash-tab="appointments"><i class="fa-solid fa-calendar-check"></i>
+            Appointments</button>
+        </nav>
+        <button class="btn btn--outline btn--sm" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i>
+          Logout</button>
+      </div>
+      <div class="dashboard__main">
+        <div class="dash-pane active" id="dash-profile">
+          <h3>My Profile</h3>
+          <div class="profile-grid" id="profile-grid">
+            <!-- populated by JS -->
+          </div>
+        </div>
+        <div class="dash-pane" id="dash-orders">
+          <h3>Order History</h3>
+          <div id="orders-list">
+            <p class="dash-empty">No orders yet. <a href="#products">Shop now!</a></p>
+          </div>
+        </div>
+        <div class="dash-pane" id="dash-wishlist">
+          <h3>My Wishlist</h3>
+          <div class="dash-product-grid" id="dash-wishlist-grid">
+            <!-- populated by JS -->
+          </div>
+        </div>
+        <div class="dash-pane" id="dash-appointments">
+          <h3>My Appointments</h3>
+          <div id="appointments-list">
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+     PRODUCT DETAIL MODAL
+     ======================================================== -->
+  <div class="modal" id="product-modal" role="dialog" aria-modal="true" aria-label="Product Details">
+    <div class="modal__content modal__content--product">
+      <button class="modal__close" id="product-modal-close" aria-label="Close"><i
+          class="fa-solid fa-xmark"></i></button>
+      <div class="product-detail">
+        <div class="product-detail__gallery">
+          <img id="pd-main-img" src="" alt="Product image" class="pd-main-img" />
+          <div class="pd-thumbnails" id="pd-thumbnails"></div>
+        </div>
+        <div class="product-detail__info">
+          <span class="product-detail__category" id="pd-category"></span>
+          <h2 id="pd-name"></h2>
+          <div class="product-detail__rating">
+            <span class="stars" id="pd-stars"></span>
+            <span id="pd-reviews"></span>
+          </div>
+          <div class="product-detail__price">
+            <span class="pd-price" id="pd-price"></span>
+            <span class="pd-original" id="pd-original"></span>
+            <span class="pd-discount" id="pd-discount"></span>
+          </div>
+          <p id="pd-description"></p>
+          <div class="pd-options">
+            <div class="pd-option-group" id="pd-frame-group">
+              <label>Frame Size</label>
+              <div class="pd-option-btns" id="pd-frame-btns"></div>
+            </div>
+            <div class="pd-option-group" id="pd-lens-group">
+              <label>Lens Type</label>
+              <div class="pd-option-btns" id="pd-lens-btns"></div>
+            </div>
+          </div>
+          <div class="pd-qty">
+            <label>Quantity</label>
+            <div class="qty-control">
+              <button class="qty-btn" id="qty-minus">-</button>
+              <span id="qty-val">1</span>
+              <button class="qty-btn" id="qty-plus">+</button>
+            </div>
+          </div>
+          <div class="pd-actions">
+            <button class="btn btn--primary" id="pd-add-cart">Add to Cart <i
+                class="fa-solid fa-bag-shopping"></i></button>
+            <button class="btn btn--icon" id="pd-wishlist-btn" aria-label="Add to Wishlist"><i
+                class="fa-regular fa-heart"></i></button>
+          </div>
+          <div class="pd-meta" id="pd-meta"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== BOTTOM NAVIGATION (App Mode) ========== -->
+  <nav class="bottom-nav" id="bottom-nav" aria-label="Bottom Navigation">
+    <a href="#hero" class="bottom-nav__item active" data-close-mobile>
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="#products" class="bottom-nav__item" data-close-mobile>
+      <i class="fa-solid fa-glasses"></i>
+      <span>Shop</span>
+    </a>
+    <a href="#booking" class="bottom-nav__item bottom-nav__item--center" data-close-mobile>
+      <i class="fa-solid fa-calendar-check"></i>
+      <span>Book</span>
+    </a>
+    <a href="#services" class="bottom-nav__item" data-close-mobile>
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+    <a href="#contact" class="bottom-nav__item" data-close-mobile>
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <script src="js/main.js"></script>
+
+  <!-- ========== PWA: SERVICE WORKER REGISTRATION ========== -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('[VisionLux PWA] Service Worker registered:', reg.scope))
+          .catch(err => console.warn('[VisionLux PWA] SW registration failed:', err));
+      });
+    }
+
+    // PWA Install Prompt
+    let deferredPrompt;
+    const installBanner = document.getElementById('pwa-install-banner');
+    const installBtn = document.getElementById('pwa-install-btn');
+    const dismissBtn = document.getElementById('pwa-install-dismiss');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      // Show banner after a short delay
+      setTimeout(() => { installBanner.hidden = false; }, 2500);
+    });
+
+    installBtn && installBtn.addEventListener('click', async () => {
+      installBanner.hidden = true;
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log('[VisionLux PWA] Install outcome:', outcome);
+        deferredPrompt = null;
+      }
+    });
+
+    dismissBtn && dismissBtn.addEventListener('click', () => {
+      installBanner.hidden = true;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      installBanner.hidden = true;
+      deferredPrompt = null;
+      console.log('[VisionLux PWA] App installed successfully!');
+    });
+
+    // Bottom nav active state on scroll
+    const sections = ['hero', 'products', 'booking', 'services', 'contact'];
+    const navItems = document.querySelectorAll('.bottom-nav__item');
+
+    window.addEventListener('scroll', () => {
+      let current = 'hero';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) current = id;
+      });
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        const href = item.getAttribute('href');
+        if (href === '#' + current) item.classList.add('active');
+      });
+    }, { passive: true });
+  </script>
+</body>
+
+</html>
